@@ -1,0 +1,43 @@
+#!/bin/sh
+# SVMM event manager
+# Chris Dorman (C) 2020
+
+wrkdir=`pwd`
+events="svmm_db/events"
+pids="svmm_db/pids"
+
+while true
+do	
+	cd $wrkdir/$events
+
+	for x in *
+	do
+		if [ -f "$x" ]; then
+			execcmd=`cat $x`
+			rm $x
+			cd $wrkdir
+			`$execcmd`
+			cd $events
+		fi
+	done
+	
+	cd $wrkdir/$pids
+	
+	for y in *
+	do
+		if [ -f "$y" ]; then
+				if ps -p $(cat $y) > /dev/null 
+				then
+					cd $wrkdir/svmm_db/users
+					echo "<div style='display:inline;color:#00ff00;'>Running</div>" > $y.status
+					echo -n "true" > $y.statuscode
+				else 
+					cd $wrkdir/svmm_db/users
+					echo "<div style='display:inline;color:#ff0000;'>Stopped</div>" > $y.status
+					echo -n "false" > $y.statuscode
+				fi
+			cd $wrkdir/$pids
+		fi
+	done
+	sleep 5
+done

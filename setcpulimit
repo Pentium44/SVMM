@@ -1,0 +1,6 @@
+#!/bin/sh
+
+BOOTSLEEPTIME=120
+
+sleep $BOOTSLEEPTIME
+cpulimit --pid $1 --limit $2 > /dev/null &

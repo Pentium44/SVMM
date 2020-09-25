@@ -1,0 +1,47 @@
+#!/bin/bash
+
+MAXLOAD=25
+CMD="qemu-system-x86_64"
+MEMS=138
+
+case $1 in 
+	status )
+			case $2 in
+				html )
+					if ps -p $(cat svmm_db/pids/$3.pid) > /dev/null 
+					then
+						echo "<div style='display:inline;color:#00ff00;'>Running</div>"
+					else
+						echo "<div style='display:inline;color:#ff0000;'>Stopped</div>"
+					fi
+				;;
+				
+				return )
+					if ps -p $(cat svmm_db/pids/$3.pid) > /dev/null 
+					then
+						echo "1"
+					else
+						echo "0"
+					fi
+				;;
+			esac
+			;;
+	start )
+		$CMD -enable-kvm -daemonize -display none -hda svmm_db/disks/$2.img -m ${MEMS}M -net nic,model=e1000,vlan=0,vlan=1 -net user,vlan=0,vlan=1,hostfwd=tcp::${2}80-:80,hostfwd=tcp::${2}22-:22,hostfwd=tcp::${2}66-:6666,hostfwd=tcp::${2}65-:25665,hostfwd=tcp::${2}21-:21,hostfwd=tcp::${2}67-:6667 -pidfile svmm_db/pids/$2.pid
+		./setcpulimit $(cat svmm_db/pids/$2.pid) $MAXLOAD > /dev/null &
+
+		#./setkilltimer $(cat svmm_db/pids/$2.pid) $2 > /dev/null &
+		;;
+
+	stopall )
+		killall $CMD
+		;;
+
+	stop ) 
+		echo "Stopping VM $2"
+		kill -TERM $(cat svmm_db/pids/$2.pid)
+		echo "Stopped!";;
+
+	* )
+ 		echo "Usage: machine {start|status|stop|stopall} {_|html|return} [vm id]";;
+esac

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap');
+html, body {
+	background-color: #626262;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center; 
+	color: #e3e3e3;
+	margin: 0 auto;
+	font-size: 18px;
+	font-family: "Ubuntu", "Roboto", sans-serif;
+}
+.title {
+	font-size: 46px;
+	text-align: center;
+	padding: 8px;
+}
+
+#navbar {
+	margin: 0 auto;
+	/*width: 100%;*/
+	/*background-color: #ffffff;*/
+	top: 1px;
+	left: 1px;
+	padding-bottom: 0px;
+}
+
+#navcontainer {
+	width: 702px;
+	max-width: 702px;
+	min-width: 702px;
+	margin: 0 auto;
+	background-color: #ffffff;
+}
+
+#navbar a {
+	text-decoration: none;
+	font-family: "Ubuntu", "Roboto", sans-serif;
+	font-size: 28px;
+	text-align: center;
+	padding-top: 4px;
+	padding-bottom: 5px;
+	background-color: #ffffff;
+	color: #5577ff;
+	width: 125px;
+	display: inline-block;
+}
+
+#navbar a:hover {
+	background-color: #999999;
+	color: #323232;
+}
+
+.notifications {
+	background-color: #171717;
+	border-radius: 4px;
+	border: solid 1px #222222;
+	padding: 4px;
+}
+
+table { padding: 1px; }
+tr, td { padding: 2px; }
+
+textarea {
+	background-color: #222222;
+	border-radius: 10px;
+	border: 1px solid #323232;
+	font-family: "Roboto Sans", Ubuntu, sans-serif;
+	outline: none;
+	resize: none;
+	color: #d7d7d7;
+	width: 98%;
+	padding: 4px;
+}
+
+input, button, select, label {
+	background-color: #222222;
+	border: solid 1px #323232;
+	outline: none;
+	border-radius: 6px;
+	color: #d7d7d7;
+	padding: 4px; 
+	font-size: 18px;
+}
+
+.button {
+        background-color: #222222;
+        border: solid 1px #323232;
+        outline: none;
+	font-size: 18px;
+        border-radius: 6px;
+        color: #d7d7d7;
+	margin: auto;
+	padding: 4px;
+	display: inline-flex;
+}
+
+a {
+	color: #5577ff;
+	text-decoration: none;
+}
+a:hover {
+	color: #aabbff;
+	text-decoration: none;
+}
+.contain {
+	background-color: #121212;
+	border: solid 1px #565656;
+	width: 690px;
+	max-width: 690px;
+	min-width: 690px;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+.maincontain {
+	margin: 0 auto;
+	width: 702px;
+}
