@@ -17,6 +17,7 @@ Setup
 * Modify config.php to your needs
 * Visit page to generate svmm_db for flat file user database
 * Execute SVMM backend as SU: sudo ./start-svmm start
+* Copy a fresh OS install of your choice in a qcow2 (or other format) image to svmm_db/disks/clean.img (THIS MUST BE DONE FOR THE SCRIPT TO COPY AND START A FRESH VM)
 
 ChangeLog
 ----
